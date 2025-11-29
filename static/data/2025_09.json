@@ -1,0 +1,17 @@
+{
+    "month": "Wrzesień",
+    "totalPrice": 48,
+    "events": [
+        {
+            "name": "Dzień Chłopaka",
+            "totalPrice": 48,
+            "items": [
+                {
+                "product": "Autko - Hot Wheels",
+                "numberOfItems": 9,
+                "price": 5.33
+                }
+            ]
+        }
+    ]
+}
