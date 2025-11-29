@@ -1,0 +1,32 @@
+{
+    "month": "Październik",
+    "totalPrice": "641.76 zł",
+    "events": [
+        {
+            "name": "Dzień Nauczyciela",
+            "totalPrice": "641.76 zł",
+            "items": [
+                {
+                "product": "Karta podarunkowa",
+                "numberOfItems": 4,
+                "price": "100.00 zł"
+                },
+                {
+                "product": "Herbata",
+                "numberOfItems": 4,
+                "price": "25.45 zł"
+                },
+                {
+                "product": "Wrzosy",
+                "numberOfItems": 4,
+                "price": "30.00 zł"
+                },
+                {
+                "product": "Torebka",
+                "numberOfItems": 4,
+                "price": "4.99 zł"
+                }
+            ]
+        }
+    ]
+}

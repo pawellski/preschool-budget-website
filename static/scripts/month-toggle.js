@@ -6,7 +6,7 @@ document.querySelectorAll('.month').forEach(month => {
     header.addEventListener('click', () => {
         content.classList.toggle('open');
         arrow.classList.toggle('open');
-        if(content.classList.contains('open')) {
+        if (content.classList.contains('open')) {
             content.style.maxHeight = content.scrollHeight + 'px';
         } else {
             content.style.maxHeight = '0';
