@@ -1,66 +1,3 @@
-// const septemberData = {
-//     "month": "Wrzesień",
-//     "totalPrice": "48.00 zł",
-//     "events": [
-//         {
-//             "name": "Dzień Chłopaka",
-//             "totalPrice": "48.00 zł",
-//             "items": [
-//                 {
-//                 "product": "Autko - Hot Wheels",
-//                 "numberOfItems": 9,
-//                 "price": "5.33 zł"
-//                 }
-//             ]
-//         }
-//     ]
-// }
-
-// const octoberData = {
-//     "month": "Październik",
-//     "totalPrice": "641.76 zł",
-//     "events": [
-//         {
-//             "name": "Dzień ",
-//             "totalPrice": "621.76 zł",
-//             "items": [
-//                 {
-//                 "product": "Karta",
-//                 "numberOfItems": 4,
-//                 "price": "10.00 zł"
-//                 },
-//                 {
-//                 "product": "Hea",
-//                 "numberOfItems": 4,
-//                 "price": "1.45 zł"
-//                 },
-//                 {
-//                 "product": "W",
-//                 "numberOfItems": 4,
-//                 "price": "220.00 zł"
-//                 },
-//                 {
-//                 "product": "bka",
-//                 "numberOfItems": 4,
-//                 "price": "4.99 zł"
-//                 }
-//             ]
-//         }
-//     ]
-// }
-
-// const novemberData = {
-//     "month": "Listopad",
-//     "totalPrice": "0.00 zł",
-//     "events": []
-// }
-
-// const decemberData = {
-//     "month": "Grudzień",
-//     "totalPrice": "2320.00 zł",
-//     "events": []
-// }
-
 function createMonthTile(monthData) {
     const monthsContainer = document.querySelector(".months");
 
@@ -140,32 +77,11 @@ function createMonthTile(monthData) {
     monthsContainer.appendChild(monthDiv);
 }
 
-// invoke
-// createMonthTile(septemberData);
-// createMonthTile(octoberData);
-// createMonthTile(novemberData);
-// createMonthTile(decemberData);
-
-// read files
-const files = [
-  "2025_09.json",
-  "2025_10.json",
-  "2025_11.json",
-  "2025_12.json"
-];
-
-// async function loadAllData() {
-//   for (const file of files) {
-//     const response = await fetch(`./static/data/${file}`);
-//     const data = await response.json();
-//     createMonthTile(data);
-//   }
-// }
-
-// loadAllData();
-
-
 async function loadAllData() {
+  const rootResponse = await fetch('./static/data/root_data.json');
+  const rootData = await rootResponse.json();
+  
+  const files = rootData.files;
   for (const file of files) {
     const response = await fetch(`./static/data/${file}`);
     const data = await response.json();
@@ -177,4 +93,5 @@ async function loadAllData() {
   }
 }
 
+// invoke
 loadAllData();
