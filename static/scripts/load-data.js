@@ -1,3 +1,22 @@
+function fillSummary(initialBudget, availableBudget) {
+  const summary = document.querySelector(".summary");
+  summary.appendChild(createSummaryTile("Początkowy budżet", initialBudget));
+  summary.appendChild(createSummaryTile("Dostępny budżet", availableBudget));
+}
+
+function createSummaryTile(label, value) {
+    const tile = document.createElement("div");
+
+    const text = document.createTextNode(label + " ");
+    const span = document.createElement("span");
+    span.textContent = value;
+
+    tile.appendChild(text);
+    tile.appendChild(span);
+
+    return tile;
+}
+
 function createMonthTile(monthData) {
     const monthsContainer = document.querySelector(".months");
 
@@ -81,12 +100,15 @@ async function loadAllData() {
   const rootResponse = await fetch('./static/data/root_data.json');
   const rootData = await rootResponse.json();
   
-  const files = rootData.files;
+  const files = rootData.files
+  let expenses = 0.0;
   for (const file of files) {
+    expenses += file.totalPrice
     const response = await fetch(`./static/data/${file}`);
     const data = await response.json();
     createMonthTile(data);
   }
+  fillSummary(rootData.initialBudget, rootData.initialBudget - expenses);
 
   if (typeof initMonthToggle === "function") {
     initMonthToggle();
