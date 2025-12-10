@@ -1,5 +1,27 @@
 {
     "month": "Grudzień",
-    "totalPrice": 0,
-    "events": []
+    "totalPrice": 91.45,
+        "events": [
+        {
+            "name": "Pasowanie - poczęstunek",
+            "totalPrice": 91.45,
+            "items": [
+                {
+                "product": "Przekąski",
+                "numberOfItems": "-",
+                "price": 18.36
+                },
+                {
+                "product": "Ciastka",
+                "numberOfItems": "-",
+                "price": 31.15
+                },
+                {
+                "product": "Owoce",
+                "numberOfItems": "-",
+                "price": 41.94
+                }
+            ]
+        }
+    ]
 }
