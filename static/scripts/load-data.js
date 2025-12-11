@@ -122,6 +122,11 @@ async function loadAllData() {
     if (typeof initMonthToggle === "function") {
         initMonthToggle();
     }
+
+    requestAnimationFrame(() => {
+        document.querySelector('.summary').style.opacity = '1';
+        document.querySelector('.months').style.opacity = '1';
+    });
 }
 
 // invoke
