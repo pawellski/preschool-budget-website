@@ -102,7 +102,7 @@ function createMonthTile(monthData) {
     header.classList.add("month-header");
     header.innerHTML = `
         ${monthData.month}
-        <span class="arrow">&#9654;</span>
+        <button class="arrow" aria-label="Rozwiń">&#9654;</button>
     `;
     monthDiv.appendChild(header);
 
