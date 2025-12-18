@@ -1,4 +1,4 @@
-const VALID_HASH = "a03f7ee191cdaf4831547a9a22d8adfd2659c99bc358959b4710b2428958006e";
+const VALID_HASH = "aed6efb7a96a59f43ad456cbeace8e03f962468104a4e37c94725c261647c99f";
 
 async function sha256(str) {
   const enc = new TextEncoder().encode(str);

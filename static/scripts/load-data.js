@@ -1,3 +1,89 @@
+const KEY_LEN = 32;
+const IV_LEN = 16;
+const ITERATIONS = 10000;
+
+async function deriveKeyAndInitializationVector(password, salt, keyLen = KEY_LEN, ivLen = IV_LEN, iterations = ITERATIONS) {
+  const encoder = new TextEncoder();
+
+  const keyMaterial = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(password),
+    { name: "PBKDF2" },
+    false,
+    ["deriveBits"]
+  );
+
+  const derivedBits = await crypto.subtle.deriveBits(
+    {
+      name: "PBKDF2",
+      salt,
+      iterations,
+      hash: "SHA-256"
+    },
+    keyMaterial,
+    (keyLen + ivLen) * 8
+  );
+
+  const derived = new Uint8Array(derivedBits);
+
+  return {
+    key: derived.slice(0, keyLen),
+    iv: derived.slice(keyLen, keyLen + ivLen)
+  };
+}
+
+async function decrypt(encBase64, password) {
+    const encBytes = Uint8Array.from(atob(encBase64), c => c.charCodeAt(0));
+
+    const header = encBytes.slice(0, 8);
+    const salt = encBytes.slice(8, 16);
+    const data = encBytes.slice(16);
+
+    const headerStr = new TextDecoder().decode(header);
+    if (headerStr !== "Salted__") {
+        throw new Error("Inproper cryptogram format.");
+    }
+
+    const { key, iv } = await deriveKeyAndInitializationVector(password, salt);
+
+    const cryptoKey = await crypto.subtle.importKey(
+        "raw",
+        key,
+        "AES-CBC",
+        false,
+        ["decrypt"]
+    );
+
+    const decrypted = await crypto.subtle.decrypt(
+        { name: "AES-CBC", iv: iv },
+        cryptoKey,
+        data
+    );
+
+    return new TextDecoder().decode(decrypted);
+}
+
+async function loadAndDecryptFile(filePath) {
+    const password = sessionStorage.getItem("pass");
+    if (!password) {
+        alert("Nie udało się odszyfrować danych. Nieprawidłowe hasło.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    try {
+        const content = await fetch(filePath);
+        const encBase64Json = await content.text();
+        const decryptedText = await decrypt(encBase64Json, password);
+        return JSON.parse(decryptedText);
+    } catch (ex) {
+        console.error("Cannot decrypt cryptogram: ", ex);
+        alert("Nie udało się odszyfrować danych. Nieprawidłowe hasło.");
+        window.location.href = "index.html";
+        return;
+    }
+}
+
 function formatPrice(value) {
     const number = Number(value);
     const [intPart, decPart] = number.toFixed(2).split(".");
@@ -104,14 +190,12 @@ function fillSummary(initialBudget, availableBudget) {
 }
 
 async function loadAllData() {
-    const rootResponse = await fetch('./static/data/root_data.json');
-    const rootData = await rootResponse.json();
+    const rootData = await loadAndDecryptFile("./static/data/root_data.enc");
 
-    const files = rootData.files
     let expenses = 0.0;
+    const files = rootData.files;
     for (const file of files) {
-        const response = await fetch(`./static/data/${file}`);
-        const data = await response.json();
+        const data = await loadAndDecryptFile(`./static/data/${file}`);
 
         expenses += data.totalPrice
 
@@ -129,5 +213,4 @@ async function loadAllData() {
     });
 }
 
-// invoke
-loadAllData();
+window.addEventListener("DOMContentLoaded", async () => loadAllData());
