@@ -8,20 +8,26 @@
 </head>
 <body>
 
-  <div class="top-image">
-    <img src="static/images/lilies-of-the-valley.png" alt="Konwalie">
+  <div class="page-wrapper">
+
+    <div class="top-image">
+      <img src="static/images/lilies-of-the-valley.png" alt="Konwalie">
+    </div>
+
+    <main>
+      <h2>Wprowadź hasło</h2>
+      <form id="login-form">
+        <input type="password" id="password-input" placeholder="Hasło" required>
+        <button type="submit">Zaloguj</button>
+      </form>
+      <div id="login-error"><span class="error-msg">Nieprawidłowe hasło</span></div>
+    </main>
+
+    <footer>
+      <span>Grupa Konwalie © 2025 | All rights reserved</span>
+    </footer>
+
   </div>
-
-  <main>
-    <h2>Wprowadź hasło</h2>
-    <input type="password" id="password-input" placeholder="Hasło">
-    <button id="login-btn">Zaloguj</button>
-    <div id="login-error"><span class="error-msg">Nieprawidłowe hasło</span></div>
-  </main>
-
-  <footer>
-    <span>Grupa Konwalie © 2025 | All rights reserved</span>
-  </footer>
 
   <script src="static/scripts/login.js"></script>
 </body>
