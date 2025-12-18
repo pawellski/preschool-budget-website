@@ -19,3 +19,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
       document.getElementById("login-error").style.display = "block";
   }
 });
+
+document.getElementById("password-input").addEventListener("input", () => {
+    document.getElementById("login-error").style.display = "none";
+});
