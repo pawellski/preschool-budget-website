@@ -196,6 +196,9 @@ footer {
     .top-image {
         height: 220px;
     }
+    .budget {
+        width: 80%;
+    }
     .months {
         padding: 0 1rem;
     }
