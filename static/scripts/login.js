@@ -8,18 +8,22 @@ async function sha256(str) {
     .join("");
 }
 
-document.getElementById("login-btn").addEventListener("click", async () => {
-  const password = document.getElementById("password-input").value;
-  const hash = await sha256(password);
+// Obsługa formularza
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault(); // blokuje domyślny submit
+    const password = document.getElementById("password-input").value;
+    const hash = await sha256(password);
 
-  if (hash === VALID_HASH) {
-      sessionStorage.setItem("pass", password); 
-      window.location.href = "app.html";
-  } else {
-      document.getElementById("login-error").style.display = "block";
-  }
+    if (hash === VALID_HASH) {
+        sessionStorage.setItem("pass", password);
+        // użycie form submit zamiast window.location.href działa w Messenger WebView
+        window.location.href = "app.html";
+    } else {
+        document.getElementById("login-error").style.display = "flex";
+    }
 });
 
+// Ukrywanie błędu przy wpisywaniu
 document.getElementById("password-input").addEventListener("input", () => {
     document.getElementById("login-error").style.display = "none";
 });

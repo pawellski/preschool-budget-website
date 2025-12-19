@@ -1,20 +1,31 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    color: #2e3e2f;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background: #ffffff; /* pozostaje biały */
-    color: #2e3e2f; /* ciemna zieleń do tekstu */
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
-/* Kontener logowania */
+/* Struktura strony */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+/* Main logowania */
 main {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,28 +33,30 @@ main {
     max-width: 300px;
     margin: 2rem auto;
     text-align: center;
+    padding-bottom: 2rem;
 }
 
-/* Input logowania */
+/* Forma i inputy */
+main form {
+    width: 100%;
+}
+
 main input {
     padding: 10px 12px;
     width: 100%;
     margin-top: 10px;
-    border: 1px solid #a5d6a7; /* mięta */
+    border: 1px solid #a5d6a7;
     border-radius: 6px;
     font-size: 1rem;
-    box-sizing: border-box;
+    background: transparent;
     transition: border-color 0.3s, box-shadow 0.3s;
-    background: transparent; /* bez tła */
 }
 
-/* Placeholder */
 main input::placeholder {
-    color: #2e4d1e; /* średnia zieleń */
+    color: #2e4d1e;
     font-style: italic;
 }
 
-/* Efekt focus na input */
 main input:focus {
     outline: none;
     border-color: #2e4d1e;
@@ -57,7 +70,7 @@ main button {
     width: 100%;
     font-size: 1rem;
     color: #ffffff;
-    background: #2e4d1e; /* głęboka, intensywna zieleń */
+    background: #2e4d1e;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -65,13 +78,11 @@ main button {
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-/* Efekt hover */
 main button:hover {
-    background: #244016; /* ciemniejsza głęboka zieleń */
+    background: #244016;
     transform: translateY(-1px);
 }
 
-/* Efekt aktywnego kliknięcia */
 main button:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -84,8 +95,8 @@ main button:active {
     align-items: center;
     font-weight: 600;
     font-size: 1.1rem;
-    color: #c62828; /* ciemna czerwień dla kontrastu */
-    background-color: #ffebee; /* bardzo jasny róż, nie zaburza zieleni */
+    color: #c62828;
+    background-color: #ffebee;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     margin-top: 0.5rem;
@@ -95,8 +106,6 @@ main button:active {
 }
 
 .error-msg {
-    margin-left: 0.5rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 700;
     font-size: 1rem;
 }
@@ -112,25 +121,15 @@ main button:active {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
-    filter: none; /* obraz bez przyciemnienia */
-}
-
-header {
-    text-align: center;
-    padding: 2rem 1rem;
 }
 
 /* Stopka */
 footer {
-    background: #d8e6d8; /* delikatna pudrowa zieleń */
+    flex-shrink: 0;
+    background: #d8e6d8;
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
-    color: #2e3e2f; /* ciemna zieleń dla kontrastu tekstu */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+    color: #2e3e2f;
 }
