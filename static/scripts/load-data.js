@@ -97,7 +97,6 @@ function createMonthTile(monthData) {
     const monthDiv = document.createElement("div");
     monthDiv.classList.add("month");
 
-    // Header
     const header = document.createElement("div");
     header.classList.add("month-header");
     header.innerHTML = `
@@ -106,11 +105,9 @@ function createMonthTile(monthData) {
     `;
     monthDiv.appendChild(header);
 
-    // Content
     const content = document.createElement("div");
     content.classList.add("month-content");
 
-    // Events
     monthData.events.forEach(event => {
         const eventDiv = document.createElement("div");
         eventDiv.classList.add("event");
@@ -143,7 +140,6 @@ function createMonthTile(monthData) {
             tbody.appendChild(tr);
         });
 
-        // Total event sum
         const sum = document.createElement("tr");
         sum.classList.add("sum-row");
         sum.innerHTML = `
@@ -158,7 +154,6 @@ function createMonthTile(monthData) {
         content.appendChild(eventDiv);
     });
 
-    // Month total
     const totalDiv = document.createElement("div");
     totalDiv.classList.add("month-total");
     totalDiv.innerHTML = `
