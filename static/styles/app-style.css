@@ -6,7 +6,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     background: #ffffff; 
-    color: #2e3e2f; /* ciemna zieleń dla tekstu */
+    color: #2e3e2f;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -31,7 +31,6 @@ header {
     padding: 2rem 1rem;
 }
 
-/* Podsumowanie */
 .summary {
     display: flex;
     justify-content: center;
@@ -43,7 +42,7 @@ header {
 }
 
 .summary div {
-    background: #f0f9f0; /* jasna, delikatna zieleń */
+    background: #f0f9f0;
     padding: 1rem 2rem;
     border-radius: 12px;
     min-width: 180px;
@@ -73,7 +72,7 @@ header {
 }
 
 .month {
-    background: #f7fdf7; /* bardzo jasna zieleń */
+    background: #f7fdf7;
     border-radius: 12px;
     margin-bottom: 1rem;
     overflow: hidden;
@@ -105,7 +104,7 @@ header {
     overflow: hidden;
     transition: max-height 0.5s ease, padding 0.5s ease;
     padding: 0 1.5rem;
-    background: #f1faf1; /* jasna zieleń */
+    background: #f1faf1;
 }
 
 .month-content.open {
@@ -118,7 +117,7 @@ header {
     align-items: center;
     font-weight: 600;
     font-size: 1.1rem;
-    color: #2e3e2f; /* pozostawiono kontrastową czerwień */
+    color: #2e3e2f;
     background-color: #f1faf1;
     padding: 0.5rem 1rem;
     border-radius: 8px;
@@ -160,7 +159,7 @@ table th, table td {
 }
 
 table th {
-    border-bottom: 1px solid #bcd0b5; /* delikatna zieleń */
+    border-bottom: 1px solid #bcd0b5;
 }
 
 .left { text-align: left; }
@@ -193,22 +192,17 @@ button.arrow {
   transform: rotate(90deg);
 }
 
-
-/* focus tylko klawiatura */
 button.arrow:focus-visible {
   outline: 2px solid rgba(255,255,255,0.6);
   outline-offset: 2px;
 }
 
-
-
-/* Stopka */
 footer {
-    background: #d8e6d8; /* pudrowa zieleń */
+    background: #d8e6d8;
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
-    color: #2e3e2f; /* ciemna zieleń */
+    color: #2e3e2f;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -17,14 +17,12 @@ body {
     min-height: 100%;
 }
 
-/* Struktura strony */
 .page-wrapper {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
 }
 
-/* Main logowania */
 main {
     display: flex;
     flex-direction: column;
@@ -37,7 +35,6 @@ main {
     flex: 1;
 }
 
-/* Forma i inputy */
 main form {
     width: 100%;
 }
@@ -64,7 +61,6 @@ main input:focus {
     box-shadow: 0 0 5px rgba(75, 93, 50, 0.3);
 }
 
-/* Button logowania */
 main button {
     padding: 10px 12px;
     margin-top: 15px;
@@ -89,7 +85,6 @@ main button:active {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Komunikaty o błędach */
 #login-error {
     display: none;
     justify-content: center;
@@ -111,7 +106,6 @@ main button:active {
     font-size: 1rem;
 }
 
-/* Obraz na górze */
 .top-image {
     width: 100%;
     height: 400px;
@@ -125,7 +119,6 @@ main button:active {
     display: block;
 }
 
-/* Stopka */
 footer {
     flex-shrink: 0;
     background: #d8e6d8;
